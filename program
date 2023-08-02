@@ -1,0 +1,92 @@
+
+using System.ComponentModel;
+using System.Linq;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+
+        Dictionary<string, List<string>> squad= new Dictionary<string, List<string>>();
+       
+        String stopword = "Blaze it!";
+        
+        //squad[input[0]] = new List<string>() { input[1] };
+        do
+        {
+            Console.WriteLine("Your input command: ");
+            string[] input = Console.ReadLine().Split(" -> ").ToArray();
+
+            if (input[0] == stopword)
+            {
+                break;
+            }
+
+            string creature = input[0];
+            string squadMate = input[1];
+            bool flag = false;
+            
+
+            
+            foreach (var el in squad.Keys) 
+            {
+                if(el == creature) // key = creature 
+                {
+                    if (!squad[creature].Contains(squadMate) || el != squadMate)
+                    {
+                        squad[creature].Add(squadMate);   
+                       
+                    }
+
+                    
+                    flag = true;
+                }
+
+               
+
+            }
+
+            if (!flag)
+            {
+                squad[creature] = new List<string>() { squadMate };
+                
+            }
+
+            
+            
+
+
+        }
+
+        while (true);
+
+        foreach(var key in squad.Keys)
+        {
+            foreach(var el in squad)
+            {
+                if (el.Value.Contains(key))
+                {
+                    el.Value.Remove(key);
+                }
+            }
+        }
+
+        foreach (var el in squad.OrderByDescending(el => el.Value.Count))
+        {
+          
+            Console.WriteLine($"{el.Key} : {el.Value.Count}");
+
+        }
+
+        
+
+
+        // toq for each e za nakraq?, shte go poopravq..
+
+        //foreach (KeyValuePair<string,string > item in squad.OrderByDescending(x => x.Key))
+
+    }
+}
+
