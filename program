@@ -13,7 +13,7 @@ internal class Program
        
         String stopword = "Blaze it!";
         
-        //squad[input[0]] = new List<string>() { input[1] };
+        
         do
         {
             Console.WriteLine("Your input command: ");
@@ -79,13 +79,6 @@ internal class Program
             Console.WriteLine($"{el.Key} : {el.Value.Count}");
 
         }
-
-        
-
-
-        // toq for each e za nakraq?, shte go poopravq..
-
-        //foreach (KeyValuePair<string,string > item in squad.OrderByDescending(x => x.Key))
 
     }
 }
